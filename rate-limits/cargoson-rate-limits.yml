@@ -1,0 +1,54 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Cargoson
+providerId: cargoson
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Transport Management
+- TMS
+- Freight
+- Shipping
+- Logistics
+- Carriers
+- Rate Limiting
+- Quotas
+- Throttling
+description: >-
+  Cargoson does not publish specific public API rate limits. As a multi-carrier
+  TMS, request throughput in practice also depends on each underlying carrier's
+  own limits and response times, since price and booking requests are relayed to
+  carrier systems. Specific per-account or per-endpoint limits are not documented
+  publicly and are not reconciled in this artifact.
+notes: >-
+  No public rate-limit figures were found in Cargoson's integration
+  documentation. Confirm any account-level or carrier-level limits, throttling
+  behavior, and retry guidance directly with Cargoson during reconciliation.
+sources:
+- https://www.cargoson.com/en/integrations
+- https://www.cargoson.com/
+responseCodes:
+  throttled: 429
+limits:
+- name: Account Request Limit
+  scope: account
+  metric: requests
+  limit: see provider documentation
+  notes: No public per-account request limit is documented.
+- name: Carrier-Relayed Limits
+  scope: carrier
+  metric: requests
+  limit: see carrier documentation
+  notes: >-
+    Price and booking calls are relayed to underlying carrier systems, whose
+    own limits and latency may apply.
+policies:
+- name: Backoff Strategy
+  description: >-
+    Clients should implement exponential backoff with jitter and honor any
+    Retry-After header on 429 responses.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,126 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Cargoson
+providerId: cargoson
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Transport Management
+- TMS
+- Freight
+- Shipping
+- Logistics
+- Carriers
+- Plans
+description: >-
+  Cargoson is sold as a flat monthly SaaS subscription with no per-shipment fees
+  or commissions; API access is included with a Cargoson account rather than
+  metered separately. Published tier names and prices (Retail, Industry,
+  Corporation, Custom) have been seen on third-party listings and may change;
+  pricing is ultimately sales-led via demo. Tier scope, included carriers, and
+  user/seat limits are not fully documented publicly, so this artifact is not
+  reconciled.
+notes: >-
+  Prices below are indicative figures reported by third-party software-listing
+  sites, not confirmed against an official Cargoson price sheet. Confirm current
+  tiers, inclusions, and limits with Cargoson sales during reconciliation.
+sources:
+- https://www.cargoson.com/
+- https://www.cargoson.com/en/integrations
+- https://softwarefinder.com/supply-chain-management/cargoson
+plans:
+- id: cargoson-retail
+  name: Retail
+  type: subscription
+  description: >-
+    Entry monthly subscription tier for smaller shippers. Indicative price
+    reported at ~EUR 199/month; confirm scope and inclusions with Cargoson.
+  entries:
+  - label: Monthly Subscription
+    name: retail_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: ~EUR 199/month (indicative, confirm with sales)
+    userMultiplied: false
+  elements:
+  - name: Multi-carrier shipment booking
+  - name: Freight rate comparison
+  - name: Shipment tracking
+  - name: Unified REST API access
+- id: cargoson-industry
+  name: Industry
+  type: subscription
+  description: >-
+    Mid monthly subscription tier. Indicative price reported at ~EUR 299/month;
+    confirm scope and inclusions with Cargoson.
+  entries:
+  - label: Monthly Subscription
+    name: industry_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: ~EUR 299/month (indicative, confirm with sales)
+    userMultiplied: false
+  elements:
+  - name: Multi-carrier shipment booking
+  - name: Freight rate comparison
+  - name: Shipment tracking
+  - name: Unified REST API access
+  - name: Webhooks
+- id: cargoson-corporation
+  name: Corporation
+  type: subscription
+  description: >-
+    Higher monthly subscription tier for larger operations. Indicative price
+    reported at ~EUR 499/month; confirm scope and inclusions with Cargoson.
+  entries:
+  - label: Monthly Subscription
+    name: corporation_monthly
+    type: flat
+    metric: subscription
+    limit: -1
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: ~EUR 499/month (indicative, confirm with sales)
+    userMultiplied: false
+  elements:
+  - name: Multi-carrier shipment booking
+  - name: Freight rate comparison
+  - name: Shipment tracking
+  - name: Unified REST API access
+  - name: Webhooks
+  - name: Priority support
+- id: cargoson-custom
+  name: Custom
+  type: enterprise
+  description: >-
+    Tailored plan for large or complex deployments. Pricing and scope negotiated
+    with Cargoson sales.
+  entries:
+  - label: Custom Agreement
+    name: custom
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: Custom carrier integrations
+  - name: Custom volume and seats
+  - name: Dedicated onboarding and support
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

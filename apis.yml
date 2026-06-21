@@ -1,0 +1,161 @@
+aid: cargoson
+url: https://raw.githubusercontent.com/api-evangelist/cargoson/refs/heads/main/apis.yml
+name: Cargoson
+kind: company
+description: Cargoson is an Estonian B2B cloud transport management software (TMS)
+  platform for manufacturers and wholesalers. Its unified REST API lets shippers
+  request freight rates, book shipments, generate labels, and track deliveries
+  across 2,000+ carriers using one set of endpoints, authentication, and data
+  formats. Cargoson is carrier-neutral; customers contract directly with their own
+  carriers and upload their own freight rates.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Transport Management
+- TMS
+- Freight
+- Shipping
+- Logistics
+- Carriers
+created: '2026-06-21'
+modified: '2026-06-21'
+specificationVersion: '0.19'
+apis:
+- aid: cargoson:shipments
+  name: Cargoson Shipments API
+  tags:
+  - Shipments
+  - Bookings
+  - Labels
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.cargoson.com/en/integrations
+  baseURL: https://www.cargoson.com/api/v1
+  properties:
+  - url: https://www.cargoson.com/en/integrations
+    type: Documentation
+  - url: openapi/cargoson-openapi.yml
+    type: OpenAPI
+  - url: collections/cargoson.postman_collection.json
+    type: PostmanCollection
+  - url: collections/cargoson.opencollection.json
+    type: OpenCollection
+  description: Create shipment queries or direct bookings via POST /queries, then
+    retrieve labels and generate return labels for existing bookings. A query can
+    be created without a carrier (for later comparison) or booked directly by
+    supplying a direct_booking_service_id.
+- aid: cargoson:price-requests-quotes
+  name: Cargoson Price Requests & Quotes API
+  tags:
+  - Price Requests
+  - Quotes
+  - Freight Rates
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.cargoson.com/en/integrations
+  baseURL: https://www.cargoson.com/api/v1
+  properties:
+  - url: https://www.cargoson.com/en/integrations
+    type: Documentation
+  - url: openapi/cargoson-openapi.yml
+    type: OpenAPI
+  - url: collections/cargoson.postman_collection.json
+    type: PostmanCollection
+  - url: collections/cargoson.opencollection.json
+    type: OpenCollection
+  description: Retrieve live freight rate quotes across activated carriers via POST
+    /freightPrices/list, comparing cost, speed, and service level before selecting
+    a carrier. Prices are pulled directly from each carrier's system.
+- aid: cargoson:transports-tracking
+  name: Cargoson Transports & Tracking API
+  tags:
+  - Transports
+  - Tracking
+  - Status
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.cargoson.com/en/integrations
+  baseURL: https://www.cargoson.com/api/v1
+  properties:
+  - url: https://www.cargoson.com/en/integrations
+    type: Documentation
+  - url: openapi/cargoson-openapi.yml
+    type: OpenAPI
+  - url: collections/cargoson.postman_collection.json
+    type: PostmanCollection
+  - url: collections/cargoson.opencollection.json
+    type: OpenCollection
+  description: Retrieve transport and tracking details for an existing shipment via
+    GET /bookings/{reference} using the Cargoson booking reference.
+- aid: cargoson:carriers
+  name: Cargoson Carriers & Services API
+  tags:
+  - Carriers
+  - Services
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.cargoson.com/en/integrations
+  baseURL: https://www.cargoson.com/api/v1
+  properties:
+  - url: https://www.cargoson.com/en/integrations
+    type: Documentation
+  - url: openapi/cargoson-openapi.yml
+    type: OpenAPI
+  - url: collections/cargoson.postman_collection.json
+    type: PostmanCollection
+  - url: collections/cargoson.opencollection.json
+    type: OpenCollection
+  description: List the carrier services available on your company account via GET
+    /services/list. Returned service IDs can be used for direct booking through
+    the Shipments API.
+- aid: cargoson:addresses
+  name: Cargoson Addresses API
+  tags:
+  - Addresses
+  - Collection
+  - Delivery
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.cargoson.com/en/integrations
+  baseURL: https://www.cargoson.com/api/v1
+  properties:
+  - url: https://www.cargoson.com/en/integrations
+    type: Documentation
+  - url: openapi/cargoson-openapi.yml
+    type: OpenAPI
+  - url: collections/cargoson.postman_collection.json
+    type: PostmanCollection
+  - url: collections/cargoson.opencollection.json
+    type: OpenCollection
+  description: Collection and delivery address details (country, postcode, address
+    rows, city, company, contact name and phone) are supplied inline on query and
+    pricing requests. A standalone documented address-book endpoint was not
+    confirmed in public documentation.
+- aid: cargoson:webhooks
+  name: Cargoson Webhooks
+  tags:
+  - Webhooks
+  - Events
+  - Notifications
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://www.cargoson.com/en/blog/what-are-webhooks-and-how-do-they-work
+  baseURL: https://www.cargoson.com/api/v1
+  properties:
+  - url: https://www.cargoson.com/en/blog/what-are-webhooks-and-how-do-they-work
+    type: Documentation
+  description: Cargoson can deliver real-time event notifications (shipment status
+    updates, booking confirmations, shipment changes) to a customer-configured
+    endpoint URL, set up under Settings > Integrations > Webhooks. Public payload
+    schemas are not documented; setup is arranged with Cargoson support.
+common:
+- type: GitHubOrganization
+  url: https://github.com/cargoson
+- type: LinkedIn
+  url: https://www.linkedin.com/company/cargoson
+- type: Website
+  url: https://www.cargoson.com/
+- type: Documentation
+  url: https://www.cargoson.com/en/integrations
+- type: Plans
+  url: plans/cargoson-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/cargoson-rate-limits.yml
+- type: FinOps
+  url: finops/cargoson-finops.yml
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

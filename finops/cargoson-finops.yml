@@ -1,0 +1,107 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Cargoson
+providerId: cargoson
+created: '2026-06-21'
+modified: '2026-06-21'
+reconciled: false
+tags:
+- Transport Management
+- TMS
+- Freight
+- Shipping
+- Logistics
+- Carriers
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Cargoson spend. Cargoson bills a flat monthly SaaS subscription
+  per the selected plan (Retail, Industry, Corporation, or Custom), with no
+  per-shipment fees or commissions on the Cargoson side; API access is included
+  in the subscription rather than metered. Actual freight/carrier charges are
+  contracted and paid directly between the customer and their carriers, outside
+  Cargoson's billing. Exact tier prices are sales-led and not fully published, so
+  this artifact is not reconciled.
+notes: >-
+  Subscription tier prices are indicative (third-party listings) and may change;
+  confirm against an official Cargoson quote during reconciliation. Underlying
+  carrier freight costs are not billed by Cargoson and are tracked separately.
+sources:
+- https://www.cargoson.com/
+- https://www.cargoson.com/en/integrations
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Cargoson
+serviceCategory: Logistics and Transport Management
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Monthly
+  billingCurrency: EUR
+  chargeCategories:
+  - Purchase
+  - Usage
+  - Adjustment
+focusColumns:
+  ServiceName: Cargoson TMS
+  ServiceCategory: Logistics and Transport Management
+  ProviderName: Cargoson
+  PublisherName: Cargoson
+  InvoiceIssuerName: Cargoson
+  BillingCurrency: EUR
+  ChargeCategory: Purchase
+  PricingCategory: Subscription-Based
+meters:
+- name: subscription_fee
+  description: Flat monthly subscription fee for the selected Cargoson plan.
+  unit: months
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+- name: shipments_booked
+  description: >-
+    Count of shipments booked through Cargoson. Not billed per-shipment by
+    Cargoson; tracked for allocation and unit-economics analysis.
+  unit: shipments
+  aggregation: sum
+  dimensions:
+  - account
+  - carrier
+- name: carrier_freight_cost
+  description: >-
+    Freight charges contracted directly between the customer and carriers.
+    Tracked outside Cargoson's invoice; included for total cost-of-shipping
+    visibility.
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - account
+  - carrier
+principles:
+- name: Visibility
+  description: >-
+    Track the flat Cargoson subscription alongside per-carrier freight spend to
+    see total cost of shipping in one place.
+- name: Allocation
+  description: >-
+    Tag bookings by carrier, business unit, or cost center to allocate both the
+    subscription and the underlying freight costs.
+- name: Optimization
+  description: >-
+    Use freight rate comparison (POST /freightPrices/list) to select the
+    best-value carrier service per shipment, and right-size the subscription tier
+    to actual volume.
+- name: Accountability
+  description: >-
+    Assign owners per account/plan; review subscription tier fit and carrier
+    spend periodically against budget.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

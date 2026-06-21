@@ -1,0 +1,114 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cargoson API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a shipment query or direct booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.cargoson.com/api/v1/queries",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"collection_date\": \"\",\n  \"collection_country\": \"\",\n  \"collection_postcode\": \"\",\n  \"collection_address_row_1\": \"\",\n  \"collection_city\": \"\",\n  \"collection_company_name\": \"\",\n  \"collection_contact_name\": \"\",\n  \"collection_contact_phone\": \"\",\n  \"delivery_country\": \"\",\n  \"delivery_postcode\": \"\",\n  \"delivery_address_row_1\": \"\",\n  \"delivery_city\": \"\",\n  \"delivery_company_name\": \"\",\n  \"delivery_contact_name\": \"\",\n  \"delivery_contact_phone\": \"\",\n  \"rows_attributes\": [\n    {\n      \"quantity\": 1,\n      \"package_type\": \"\",\n      \"weight\": 0,\n      \"description\": \"\"\n    }\n  ],\n  \"options\": {\n    \"direct_booking_service_id\": 0\n  }\n}"
+            }
+          },
+          "docs": "Create a transport request. In query mode no carrier is selected; supply options.direct_booking_service_id to book directly."
+        },
+        {
+          "info": {
+            "name": "Create a return label for an existing shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.cargoson.com/api/v1/bookings/{reference}/return_labels",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a return shipping label for an existing booking by its Cargoson booking reference."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Price Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get freight rate quotes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.cargoson.com/api/v1/freightPrices/list",
+            "body": {
+              "type": "json",
+              "data": "{\n  \"collection_country\": \"\",\n  \"collection_postcode\": \"\",\n  \"collection_city\": \"\",\n  \"delivery_country\": \"\",\n  \"delivery_postcode\": \"\",\n  \"delivery_city\": \"\",\n  \"rows_attributes\": [\n    {\n      \"quantity\": 1,\n      \"package_type\": \"\",\n      \"weight\": 0,\n      \"description\": \"\"\n    }\n  ]\n}"
+            }
+          },
+          "docs": "Retrieve live freight rate quotes across activated carriers."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Carriers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List carrier services available on the account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.cargoson.com/api/v1/services/list"
+          },
+          "docs": "Return the list of carrier services available on your company account."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Transports & Tracking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve booking and tracking details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.cargoson.com/api/v1/bookings/{reference}"
+          },
+          "docs": "Retrieve transport and tracking details for an existing shipment using the Cargoson booking reference."
+        }
+      ]
+    }
+  ]
+}

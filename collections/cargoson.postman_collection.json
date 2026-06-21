@@ -1,0 +1,142 @@
+{
+  "info": {
+    "name": "Cargoson API",
+    "description": "Cargoson multi-carrier transport management (TMS) REST API. Base URL https://www.cargoson.com/api/v1. Authenticate with an API key as a Bearer token and send Accept: application/vnd.api.v1.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.cargoson.com/api/v1"
+    },
+    {
+      "key": "reference",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Shipments",
+      "item": [
+        {
+          "name": "Create a shipment query or direct booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/vnd.api.v1" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/queries",
+              "host": ["{{baseUrl}}"],
+              "path": ["queries"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collection_date\": \"\",\n  \"collection_country\": \"\",\n  \"collection_postcode\": \"\",\n  \"collection_address_row_1\": \"\",\n  \"collection_city\": \"\",\n  \"collection_company_name\": \"\",\n  \"collection_contact_name\": \"\",\n  \"collection_contact_phone\": \"\",\n  \"delivery_country\": \"\",\n  \"delivery_postcode\": \"\",\n  \"delivery_address_row_1\": \"\",\n  \"delivery_city\": \"\",\n  \"delivery_company_name\": \"\",\n  \"delivery_contact_name\": \"\",\n  \"delivery_contact_phone\": \"\",\n  \"rows_attributes\": [\n    {\n      \"quantity\": 1,\n      \"package_type\": \"\",\n      \"weight\": 0,\n      \"description\": \"\"\n    }\n  ],\n  \"options\": {\n    \"direct_booking_service_id\": 0\n  }\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Create a transport request. In query mode no carrier is selected; supply options.direct_booking_service_id to book directly with a carrier service."
+          }
+        },
+        {
+          "name": "Create a return label for an existing shipment",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/vnd.api.v1" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bookings/{{reference}}/return_labels",
+              "host": ["{{baseUrl}}"],
+              "path": ["bookings", "{{reference}}", "return_labels"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Generate a return shipping label for an existing booking by its Cargoson booking reference."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Price Requests",
+      "item": [
+        {
+          "name": "Get freight rate quotes",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Accept", "value": "application/vnd.api.v1" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/freightPrices/list",
+              "host": ["{{baseUrl}}"],
+              "path": ["freightPrices", "list"]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collection_country\": \"\",\n  \"collection_postcode\": \"\",\n  \"collection_city\": \"\",\n  \"delivery_country\": \"\",\n  \"delivery_postcode\": \"\",\n  \"delivery_city\": \"\",\n  \"rows_attributes\": [\n    {\n      \"quantity\": 1,\n      \"package_type\": \"\",\n      \"weight\": 0,\n      \"description\": \"\"\n    }\n  ]\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "description": "Retrieve live freight rate quotes across activated carriers."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Carriers",
+      "item": [
+        {
+          "name": "List carrier services available on the account",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api.v1" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/services/list",
+              "host": ["{{baseUrl}}"],
+              "path": ["services", "list"]
+            },
+            "description": "Return the list of carrier services available on your company account."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Transports & Tracking",
+      "item": [
+        {
+          "name": "Retrieve booking and tracking details",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "Accept", "value": "application/vnd.api.v1" }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/bookings/{{reference}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["bookings", "{{reference}}"]
+            },
+            "description": "Retrieve transport and tracking details for an existing shipment using the Cargoson booking reference."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+aid: cargoson
+name: Cargoson
+review:
+  question: Does Cargoson expose a documented public WebSocket or async event-streaming API?
+  answer: false
+  date: '2026-06-21'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Cargoson's documented API surface is REST
+    (HTTPS) only. Cargoson does support webhooks (HTTP callbacks) for event
+    notifications, but the public documentation does not publish webhook event
+    names, payload schemas, delivery semantics, or a subscription endpoint;
+    setup is arranged with Cargoson support. With no documented channels,
+    messages, or payloads, there was insufficient public detail to model an
+    accurate AsyncAPI document, and none was fabricated.
+findings:
+  summary: |
+    Cargoson exposes a unified multi-carrier REST API under
+    https://www.cargoson.com/api/v1, authenticated with an API key as a Bearer
+    token plus an Accept header of application/vnd.api.v1. Confirmed REST
+    operations cover shipment queries / direct bookings (POST /queries), freight
+    rate quotes (POST /freightPrices/list), carrier service listing
+    (GET /services/list), booking and tracking retrieval
+    (GET /bookings/{reference}), and return labels
+    (POST /bookings/{reference}/return_labels). Cargoson also offers outbound
+    webhooks for events such as shipment status updates and booking
+    confirmations, configured under Settings > Integrations > Webhooks, but the
+    webhook payloads and event catalog are not publicly documented. No WebSocket
+    (ws:// or wss://) or other bidirectional streaming transport is documented.
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://www.cargoson.com/api/v1
+      documented: true
+    - protocol: Webhooks
+      scheme: https
+      documented: partial
+      note: >-
+        Outbound HTTP callbacks exist (status updates, booking confirmations,
+        shipment changes) and are configured in the Cargoson UI, but event names
+        and payload schemas are not published in public documentation.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented in Cargoson's integration documentation.
+  endpointsConfirmedRest:
+    - POST   https://www.cargoson.com/api/v1/queries
+    - POST   https://www.cargoson.com/api/v1/freightPrices/list
+    - GET    https://www.cargoson.com/api/v1/services/list
+    - GET    https://www.cargoson.com/api/v1/bookings/{reference}
+    - POST   https://www.cargoson.com/api/v1/bookings/{reference}/return_labels
+  authentication:
+    scheme: bearer
+    header: 'Authorization: Bearer YOUR_API_KEY'
+    additionalHeaders:
+      - 'Accept: application/vnd.api.v1'
+sources:
+  - url: https://www.cargoson.com/en/integrations
+    type: Documentation
+    note: Integration and API documentation hub; lists per-carrier API documentation pages sharing one unified API.
+  - url: https://www.cargoson.com/integrations/brt-s-p-a/api-documentation
+    type: APIReference
+    note: Documents base URL, Bearer auth, Accept header, and the /queries, /freightPrices/list, /services/list, /bookings, and return_labels endpoints.
+  - url: https://www.cargoson.com/en/integrations/an-transport-ou/api-documentation
+    type: APIReference
+    note: Confirms the same endpoint set and the /queries request body fields (collection_*, delivery_*, rows_attributes, options[direct_booking_service_id]).
+  - url: https://www.cargoson.com/en/blog/what-are-webhooks-and-how-do-they-work
+    type: Documentation
+    note: Describes Cargoson webhooks (status updates, new bookings) configured under Settings > Integrations > Webhooks; no payload schema published.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No documented WebSocket surface exists, and Cargoson's webhook events lack
+    published channels, payloads, or schemas, so no AsyncAPI document was
+    created. The REST surface is captured in openapi/cargoson-openapi.yml and the
+    apis.yml catalog; webhooks are recorded as a known but underdocumented
+    capability rather than modeled speculatively.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
