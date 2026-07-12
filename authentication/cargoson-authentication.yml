@@ -1,0 +1,14 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/cargoson-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: 'API key passed as a Bearer token in the Authorization header (`Authorization:
+    Bearer YOUR_API_KEY`). Requests must also send `Accept: application/vnd.api.v1`.'
+  sources:
+  - openapi/cargoson-openapi.yml
