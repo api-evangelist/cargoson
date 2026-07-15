@@ -142,6 +142,8 @@ apis:
     endpoint URL, set up under Settings > Integrations > Webhooks. Public payload
     schemas are not documented; setup is arranged with Cargoson support.
 common:
+- type: AgenticAccess
+  url: agentic-access/cargoson-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/cargoson-vulnerability-disclosure.yml
 - type: DomainSecurity
