@@ -9,6 +9,6 @@ schemes:
   type: http
   scheme: bearer
   description: 'API key passed as a Bearer token in the Authorization header (`Authorization:
-    Bearer YOUR_API_KEY`). Requests must also send `Accept: application/vnd.api.v1`.'
+    Bearer [example key]`). Requests must also send `Accept: application/vnd.api.v1`.'
   sources:
   - openapi/cargoson-openapi.yml
