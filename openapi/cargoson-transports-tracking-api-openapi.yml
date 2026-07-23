@@ -1,0 +1,58 @@
+openapi: 3.0.1
+info:
+  title: Cargoson Carriers Transports & Tracking API
+  description: Cargoson is a multi-carrier transport management (TMS) REST API. It exposes a single, unified interface for requesting freight rates, creating shipment queries and direct bookings, retrieving labels and tracking details, and listing carrier services across 2,000+ carriers. Authentication uses an API key as a Bearer token. Requests must send an Accept header of `application/vnd.api.v1`. Endpoints and field names below reflect Cargoson's public integration documentation; request/response schemas not published by Cargoson are intentionally left open (additionalProperties true) rather than fabricated.
+  termsOfService: https://www.cargoson.com/en/terms
+  contact:
+    name: Cargoson Support
+    url: https://www.cargoson.com/en/integrations
+  version: '1'
+servers:
+- url: https://www.cargoson.com/api/v1
+  description: Cargoson production API (v1)
+security:
+- bearerAuth: []
+tags:
+- name: Transports & Tracking
+  description: Retrieve booking, transport, and tracking details.
+paths:
+  /bookings/{reference}:
+    get:
+      operationId: getBooking
+      tags:
+      - Transports & Tracking
+      summary: Retrieve booking and tracking details
+      description: Retrieves transport and tracking details for an existing shipment using the Cargoson booking reference.
+      parameters:
+      - name: reference
+        in: path
+        required: true
+        description: Cargoson booking reference.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Booking and tracking details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingResponse'
+        '401':
+          description: Missing or invalid API key.
+        '404':
+          description: Booking reference not found.
+components:
+  schemas:
+    BookingResponse:
+      type: object
+      description: Booking, transport, and tracking details. Exact response fields are not published by Cargoson; left open rather than fabricated.
+      properties:
+        reference:
+          type: string
+          description: Cargoson booking reference.
+      additionalProperties: true
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API key passed as a Bearer token in the Authorization header (`Authorization: Bearer YOUR_API_KEY`). Requests must also send `Accept: application/vnd.api.v1`.'

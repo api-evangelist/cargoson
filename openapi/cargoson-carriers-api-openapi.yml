@@ -1,0 +1,61 @@
+openapi: 3.0.1
+info:
+  title: Cargoson Carriers API
+  description: Cargoson is a multi-carrier transport management (TMS) REST API. It exposes a single, unified interface for requesting freight rates, creating shipment queries and direct bookings, retrieving labels and tracking details, and listing carrier services across 2,000+ carriers. Authentication uses an API key as a Bearer token. Requests must send an Accept header of `application/vnd.api.v1`. Endpoints and field names below reflect Cargoson's public integration documentation; request/response schemas not published by Cargoson are intentionally left open (additionalProperties true) rather than fabricated.
+  termsOfService: https://www.cargoson.com/en/terms
+  contact:
+    name: Cargoson Support
+    url: https://www.cargoson.com/en/integrations
+  version: '1'
+servers:
+- url: https://www.cargoson.com/api/v1
+  description: Cargoson production API (v1)
+security:
+- bearerAuth: []
+tags:
+- name: Carriers
+  description: List carrier services available on the account.
+paths:
+  /services/list:
+    get:
+      operationId: listServices
+      tags:
+      - Carriers
+      summary: List carrier services available on the account
+      description: Returns the list of carrier services available on your company account. Service identifiers can be used as direct_booking_service_id when creating a direct booking.
+      responses:
+        '200':
+          description: List of available carrier services.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceListResponse'
+        '401':
+          description: Missing or invalid API key.
+components:
+  schemas:
+    ServiceListResponse:
+      type: object
+      description: List of carrier services.
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
+      additionalProperties: true
+    Service:
+      type: object
+      description: A carrier service available on the account.
+      properties:
+        id:
+          type: integer
+          description: Service identifier usable as direct_booking_service_id.
+        name:
+          type: string
+          description: Service name.
+      additionalProperties: true
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: 'API key passed as a Bearer token in the Authorization header (`Authorization: Bearer YOUR_API_KEY`). Requests must also send `Accept: application/vnd.api.v1`.'
