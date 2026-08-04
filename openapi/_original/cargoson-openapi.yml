@@ -1,0 +1,314 @@
+openapi: 3.0.1
+info:
+  title: Cargoson API
+  description: >-
+    Cargoson is a multi-carrier transport management (TMS) REST API. It exposes a
+    single, unified interface for requesting freight rates, creating shipment
+    queries and direct bookings, retrieving labels and tracking details, and
+    listing carrier services across 2,000+ carriers. Authentication uses an API
+    key as a Bearer token. Requests must send an Accept header of
+    `application/vnd.api.v1`. Endpoints and field names below reflect Cargoson's
+    public integration documentation; request/response schemas not published by
+    Cargoson are intentionally left open (additionalProperties true) rather than
+    fabricated.
+  termsOfService: https://www.cargoson.com/en/terms
+  contact:
+    name: Cargoson Support
+    url: https://www.cargoson.com/en/integrations
+  version: '1'
+servers:
+  - url: https://www.cargoson.com/api/v1
+    description: Cargoson production API (v1)
+security:
+  - bearerAuth: []
+tags:
+  - name: Shipments
+    description: Create shipment queries and direct bookings, retrieve labels.
+  - name: Price Requests
+    description: Retrieve live freight rate quotes across activated carriers.
+  - name: Transports & Tracking
+    description: Retrieve booking, transport, and tracking details.
+  - name: Carriers
+    description: List carrier services available on the account.
+paths:
+  /queries:
+    post:
+      operationId: createQuery
+      tags:
+        - Shipments
+      summary: Create a shipment query or direct booking
+      description: >-
+        Creates a transport request. In query mode the request is created
+        without selecting a carrier so prices and delivery times can be compared
+        later. Supplying options[direct_booking_service_id] books directly with
+        the chosen carrier service.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+      responses:
+        '200':
+          description: Query or booking created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingResponse'
+        '401':
+          description: Missing or invalid API key.
+        '422':
+          description: Validation error in the request body.
+  /freightPrices/list:
+    post:
+      operationId: listFreightPrices
+      tags:
+        - Price Requests
+      summary: Get freight rate quotes
+      description: >-
+        Returns live freight rate quotes and available services from the
+        carriers activated on the account, based on the supplied collection,
+        delivery, and shipment row details.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FreightPriceListRequest'
+      responses:
+        '200':
+          description: List of freight price quotes.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FreightPriceListResponse'
+        '401':
+          description: Missing or invalid API key.
+        '422':
+          description: Validation error in the request body.
+  /services/list:
+    get:
+      operationId: listServices
+      tags:
+        - Carriers
+      summary: List carrier services available on the account
+      description: >-
+        Returns the list of carrier services available on your company account.
+        Service identifiers can be used as direct_booking_service_id when
+        creating a direct booking.
+      responses:
+        '200':
+          description: List of available carrier services.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceListResponse'
+        '401':
+          description: Missing or invalid API key.
+  /bookings/{reference}:
+    get:
+      operationId: getBooking
+      tags:
+        - Transports & Tracking
+      summary: Retrieve booking and tracking details
+      description: >-
+        Retrieves transport and tracking details for an existing shipment using
+        the Cargoson booking reference.
+      parameters:
+        - name: reference
+          in: path
+          required: true
+          description: Cargoson booking reference.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Booking and tracking details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BookingResponse'
+        '401':
+          description: Missing or invalid API key.
+        '404':
+          description: Booking reference not found.
+  /bookings/{reference}/return_labels:
+    post:
+      operationId: createReturnLabel
+      tags:
+        - Shipments
+      summary: Create a return label for an existing shipment
+      description: >-
+        Generates a return shipping label for an existing booking identified by
+        its Cargoson booking reference.
+      parameters:
+        - name: reference
+          in: path
+          required: true
+          description: Cargoson booking reference.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Return label created.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReturnLabelResponse'
+        '401':
+          description: Missing or invalid API key.
+        '404':
+          description: Booking reference not found.
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: >-
+        API key passed as a Bearer token in the Authorization header
+        (`Authorization: Bearer YOUR_API_KEY`). Requests must also send
+        `Accept: application/vnd.api.v1`.
+  schemas:
+    ShipmentRow:
+      type: object
+      description: A single line/row in a shipment.
+      properties:
+        quantity:
+          type: integer
+          description: Number of packages.
+        package_type:
+          type: string
+          description: Package type code (e.g. pallet, parcel, box).
+        weight:
+          type: number
+          description: Weight of the row.
+        description:
+          type: string
+          description: Goods description.
+      additionalProperties: true
+    QueryRequest:
+      type: object
+      description: >-
+        Shipment query / booking request. Collection and delivery details are
+        supplied inline. Field names reflect Cargoson's documented integration
+        examples.
+      properties:
+        collection_date:
+          type: string
+          description: Requested collection date.
+        collection_country:
+          type: string
+          description: Collection country code.
+        collection_postcode:
+          type: string
+        collection_address_row_1:
+          type: string
+        collection_city:
+          type: string
+        collection_company_name:
+          type: string
+        collection_contact_name:
+          type: string
+        collection_contact_phone:
+          type: string
+        delivery_country:
+          type: string
+          description: Delivery country code.
+        delivery_postcode:
+          type: string
+        delivery_address_row_1:
+          type: string
+        delivery_city:
+          type: string
+        delivery_company_name:
+          type: string
+        delivery_contact_name:
+          type: string
+        delivery_contact_phone:
+          type: string
+        rows_attributes:
+          type: array
+          description: Shipment rows.
+          items:
+            $ref: '#/components/schemas/ShipmentRow'
+        options:
+          type: object
+          description: Booking options.
+          properties:
+            direct_booking_service_id:
+              type: integer
+              description: >-
+                Carrier service ID (from the services or freight price list) to
+                book directly with the chosen carrier.
+          additionalProperties: true
+      additionalProperties: true
+    FreightPriceListRequest:
+      type: object
+      description: >-
+        Request for freight rate quotes. Uses the same collection, delivery, and
+        rows_attributes structure as a query.
+      properties:
+        collection_country:
+          type: string
+        collection_postcode:
+          type: string
+        collection_city:
+          type: string
+        delivery_country:
+          type: string
+        delivery_postcode:
+          type: string
+        delivery_city:
+          type: string
+        rows_attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/ShipmentRow'
+      additionalProperties: true
+    FreightPrice:
+      type: object
+      description: A single carrier rate quote. Exact fields vary by carrier.
+      additionalProperties: true
+    FreightPriceListResponse:
+      type: object
+      description: Collection of freight price quotes.
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FreightPrice'
+      additionalProperties: true
+    Service:
+      type: object
+      description: A carrier service available on the account.
+      properties:
+        id:
+          type: integer
+          description: Service identifier usable as direct_booking_service_id.
+        name:
+          type: string
+          description: Service name.
+      additionalProperties: true
+    ServiceListResponse:
+      type: object
+      description: List of carrier services.
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
+      additionalProperties: true
+    BookingResponse:
+      type: object
+      description: >-
+        Booking, transport, and tracking details. Exact response fields are not
+        published by Cargoson; left open rather than fabricated.
+      properties:
+        reference:
+          type: string
+          description: Cargoson booking reference.
+      additionalProperties: true
+    ReturnLabelResponse:
+      type: object
+      description: Return label result. Exact fields are not published by Cargoson.
+      additionalProperties: true

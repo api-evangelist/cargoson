@@ -1,0 +1,20 @@
+{
+  "provider": "cargoson",
+  "sources": [
+    "cargoson-carriers-api-openapi.yml",
+    "cargoson-price-requests-api-openapi.yml",
+    "cargoson-shipments-api-openapi.yml",
+    "cargoson-transports-tracking-api-openapi.yml"
+  ],
+  "outputs": [
+    "cargoson-carriers-api-openapi.yml",
+    "cargoson-price-requests-api-openapi.yml",
+    "cargoson-shipments-api-openapi.yml",
+    "cargoson-transports-tracking-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
