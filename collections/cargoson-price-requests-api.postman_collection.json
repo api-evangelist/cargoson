@@ -1,0 +1,238 @@
+{
+  "item": [
+    {
+      "id": "47859d65-1f4a-4cff-9425-2b542c71f5e7",
+      "name": "Price Requests",
+      "description": {
+        "content": "Retrieve live freight rate quotes across activated carriers.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0d81fbde-2c57-4971-b17a-2906a91b9e33",
+          "name": "Get freight rate quotes",
+          "request": {
+            "name": "Get freight rate quotes",
+            "description": {
+              "content": "Returns live freight rate quotes and available services from the carriers activated on the account, based on the supplied collection, delivery, and shipment row details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "freightPrices",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collection_country\": \"<string>\",\n  \"collection_postcode\": \"<string>\",\n  \"collection_city\": \"<string>\",\n  \"delivery_country\": \"<string>\",\n  \"delivery_postcode\": \"<string>\",\n  \"delivery_city\": \"<string>\",\n  \"rows_attributes\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "61fe4f68-8ce0-40cf-8a03-1ae8ef28037e",
+              "name": "List of freight price quotes.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "freightPrices",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collection_country\": \"<string>\",\n  \"collection_postcode\": \"<string>\",\n  \"collection_city\": \"<string>\",\n  \"delivery_country\": \"<string>\",\n  \"delivery_postcode\": \"<string>\",\n  \"delivery_city\": \"<string>\",\n  \"rows_attributes\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\",\n      \"key_0\": 144.667448410839,\n      \"key_1\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"key_0\": \"string\"\n    },\n    {\n      \"key_0\": 5941,\n      \"key_1\": \"string\"\n    }\n  ],\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93a36820-22b7-466f-a716-77b17392a6ca",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "freightPrices",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collection_country\": \"<string>\",\n  \"collection_postcode\": \"<string>\",\n  \"collection_city\": \"<string>\",\n  \"delivery_country\": \"<string>\",\n  \"delivery_postcode\": \"<string>\",\n  \"delivery_city\": \"<string>\",\n  \"rows_attributes\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\",\n      \"key_0\": 144.667448410839,\n      \"key_1\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8b20147c-99cd-4700-8e10-a0c4c54bc2ac",
+              "name": "Validation error in the request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "freightPrices",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collection_country\": \"<string>\",\n  \"collection_postcode\": \"<string>\",\n  \"collection_city\": \"<string>\",\n  \"delivery_country\": \"<string>\",\n  \"delivery_postcode\": \"<string>\",\n  \"delivery_city\": \"<string>\",\n  \"rows_attributes\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\",\n      \"key_0\": 144.667448410839,\n      \"key_1\": \"string\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.cargoson.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "386fb622-208f-4e1e-80d7-22273e0731a0",
+    "name": "Cargoson Carriers Price Requests API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cargoson is a multi-carrier transport management (TMS) REST API. It exposes a single, unified interface for requesting freight rates, creating shipment queries and direct bookings, retrieving labels and tracking details, and listing carrier services across 2,000+ carriers. Authentication uses an API key as a Bearer token. Requests must send an Accept header of `application/vnd.api.v1`. Endpoints and field names below reflect Cargoson's public integration documentation; request/response schemas not published by Cargoson are intentionally left open (additionalProperties true) rather than fabricated.\n\nContact Support:\n Name: Cargoson Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "item": [
+    {
+      "id": "ad553b84-bf76-4d92-ad82-b36ee7d23716",
+      "name": "Carriers",
+      "description": {
+        "content": "List carrier services available on the account.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "359dd9d3-2095-4b1b-8310-33d190a6394f",
+          "name": "List carrier services available on the account",
+          "request": {
+            "name": "List carrier services available on the account",
+            "description": {
+              "content": "Returns the list of carrier services available on your company account. Service identifiers can be used as direct_booking_service_id when creating a direct booking.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "services",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d1d2bd23-0232-41d7-9303-c2a0ff969199",
+              "name": "List of available carrier services.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 2982,\n      \"name\": \"string\",\n      \"key_0\": 8294,\n      \"key_1\": 1551,\n      \"key_2\": true\n    },\n    {\n      \"id\": 3468,\n      \"name\": \"string\",\n      \"key_0\": false,\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    }\n  ],\n  \"key_0\": false,\n  \"key_1\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f3a717ac-beaa-4f0c-b664-05128006870d",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "services",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.cargoson.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "47cf518f-d82c-431a-9001-971e2939bce0",
+    "name": "Cargoson Carriers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cargoson is a multi-carrier transport management (TMS) REST API. It exposes a single, unified interface for requesting freight rates, creating shipment queries and direct bookings, retrieving labels and tracking details, and listing carrier services across 2,000+ carriers. Authentication uses an API key as a Bearer token. Requests must send an Accept header of `application/vnd.api.v1`. Endpoints and field names below reflect Cargoson's public integration documentation; request/response schemas not published by Cargoson are intentionally left open (additionalProperties true) rather than fabricated.\n\nContact Support:\n Name: Cargoson Support",
+      "type": "text/plain"
+    }
+  }
+}

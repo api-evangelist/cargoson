@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cargoson Carriers API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Carriers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List carrier services available on the account",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.cargoson.com/api/v1/services/list"
+          },
+          "docs": "Returns the list of carrier services available on your company account. Service identifiers can be used as direct_booking_service_id when creating a direct booking."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

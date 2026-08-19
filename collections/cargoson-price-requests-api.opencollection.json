@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cargoson Carriers Price Requests API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Price Requests",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get freight rate quotes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.cargoson.com/api/v1/freightPrices/list",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns live freight rate quotes and available services from the carriers activated on the account, based on the supplied collection, delivery, and shipment row details."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

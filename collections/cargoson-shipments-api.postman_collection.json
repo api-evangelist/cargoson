@@ -1,0 +1,430 @@
+{
+  "item": [
+    {
+      "id": "42bafe5e-427a-411a-b43e-b80dbfe4d9c8",
+      "name": "Shipments",
+      "description": {
+        "content": "Create shipment queries and direct bookings, retrieve labels.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "85d3094a-d379-4d90-9bf2-bcd60138a810",
+          "name": "Create a shipment query or direct booking",
+          "request": {
+            "name": "Create a shipment query or direct booking",
+            "description": {
+              "content": "Creates a transport request. In query mode the request is created without selecting a carrier so prices and delivery times can be compared later. Supplying options[direct_booking_service_id] books directly with the chosen carrier service.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "queries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collection_date\": \"<string>\",\n  \"collection_country\": \"<string>\",\n  \"collection_postcode\": \"<string>\",\n  \"collection_address_row_1\": \"<string>\",\n  \"collection_city\": \"<string>\",\n  \"collection_company_name\": \"<string>\",\n  \"collection_contact_name\": \"<string>\",\n  \"collection_contact_phone\": \"<string>\",\n  \"delivery_country\": \"<string>\",\n  \"delivery_postcode\": \"<string>\",\n  \"delivery_address_row_1\": \"<string>\",\n  \"delivery_city\": \"<string>\",\n  \"delivery_company_name\": \"<string>\",\n  \"delivery_contact_name\": \"<string>\",\n  \"delivery_contact_phone\": \"<string>\",\n  \"rows_attributes\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"options\": {\n    \"direct_booking_service_id\": \"<integer>\",\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d95558e0-5300-4161-bd20-b860913ce831",
+              "name": "Query or booking created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collection_date\": \"<string>\",\n  \"collection_country\": \"<string>\",\n  \"collection_postcode\": \"<string>\",\n  \"collection_address_row_1\": \"<string>\",\n  \"collection_city\": \"<string>\",\n  \"collection_company_name\": \"<string>\",\n  \"collection_contact_name\": \"<string>\",\n  \"collection_contact_phone\": \"<string>\",\n  \"delivery_country\": \"<string>\",\n  \"delivery_postcode\": \"<string>\",\n  \"delivery_address_row_1\": \"<string>\",\n  \"delivery_city\": \"<string>\",\n  \"delivery_company_name\": \"<string>\",\n  \"delivery_contact_name\": \"<string>\",\n  \"delivery_contact_phone\": \"<string>\",\n  \"rows_attributes\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\",\n      \"key_0\": 1698.0047095799978,\n      \"key_1\": false\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"options\": {\n    \"direct_booking_service_id\": \"<integer>\",\n    \"key_0\": 926,\n    \"key_1\": false,\n    \"key_2\": 6606,\n    \"key_3\": 6883\n  },\n  \"key_0\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"reference\": \"string\",\n  \"key_0\": \"string\",\n  \"key_1\": 167,\n  \"key_2\": 7707,\n  \"key_3\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c92f2543-8654-4f7c-8e00-842c580b6bc2",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collection_date\": \"<string>\",\n  \"collection_country\": \"<string>\",\n  \"collection_postcode\": \"<string>\",\n  \"collection_address_row_1\": \"<string>\",\n  \"collection_city\": \"<string>\",\n  \"collection_company_name\": \"<string>\",\n  \"collection_contact_name\": \"<string>\",\n  \"collection_contact_phone\": \"<string>\",\n  \"delivery_country\": \"<string>\",\n  \"delivery_postcode\": \"<string>\",\n  \"delivery_address_row_1\": \"<string>\",\n  \"delivery_city\": \"<string>\",\n  \"delivery_company_name\": \"<string>\",\n  \"delivery_contact_name\": \"<string>\",\n  \"delivery_contact_phone\": \"<string>\",\n  \"rows_attributes\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\",\n      \"key_0\": 1698.0047095799978,\n      \"key_1\": false\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"options\": {\n    \"direct_booking_service_id\": \"<integer>\",\n    \"key_0\": 926,\n    \"key_1\": false,\n    \"key_2\": 6606,\n    \"key_3\": 6883\n  },\n  \"key_0\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "53b31ac7-c5a0-4de4-90ef-8fe94fff1144",
+              "name": "Validation error in the request body.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "queries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collection_date\": \"<string>\",\n  \"collection_country\": \"<string>\",\n  \"collection_postcode\": \"<string>\",\n  \"collection_address_row_1\": \"<string>\",\n  \"collection_city\": \"<string>\",\n  \"collection_company_name\": \"<string>\",\n  \"collection_contact_name\": \"<string>\",\n  \"collection_contact_phone\": \"<string>\",\n  \"delivery_country\": \"<string>\",\n  \"delivery_postcode\": \"<string>\",\n  \"delivery_address_row_1\": \"<string>\",\n  \"delivery_city\": \"<string>\",\n  \"delivery_company_name\": \"<string>\",\n  \"delivery_contact_name\": \"<string>\",\n  \"delivery_contact_phone\": \"<string>\",\n  \"rows_attributes\": [\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\",\n      \"key_0\": 1698.0047095799978,\n      \"key_1\": false\n    },\n    {\n      \"quantity\": \"<integer>\",\n      \"package_type\": \"<string>\",\n      \"weight\": \"<number>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"options\": {\n    \"direct_booking_service_id\": \"<integer>\",\n    \"key_0\": 926,\n    \"key_1\": false,\n    \"key_2\": 6606,\n    \"key_3\": 6883\n  },\n  \"key_0\": \"string\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dd37cd3a-632c-4602-94fa-1e8cbda68458",
+          "name": "Create a return label for an existing shipment",
+          "request": {
+            "name": "Create a return label for an existing shipment",
+            "description": {
+              "content": "Generates a return shipping label for an existing booking identified by its Cargoson booking reference.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bookings",
+                ":reference",
+                "return_labels"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reference",
+                  "description": "(Required) Cargoson booking reference."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "48de0147-f1b7-4006-a70a-b8ba13d61411",
+              "name": "Return label created.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bookings",
+                    ":reference",
+                    "return_labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Cargoson booking reference."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 6591.3109710056915,\n  \"key_1\": \"string\",\n  \"key_2\": 7716\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "85b383a9-5e67-4073-a15a-8104f4063885",
+              "name": "Missing or invalid API key.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bookings",
+                    ":reference",
+                    "return_labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Cargoson booking reference."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ace8e66a-4815-40dc-a868-4d15225f8e88",
+              "name": "Booking reference not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bookings",
+                    ":reference",
+                    "return_labels"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference",
+                      "description": "(Required) Cargoson booking reference."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.cargoson.com/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "4a6c2d64-c2f9-4d96-9f22-c9557104c18e",
+    "name": "Cargoson Carriers Shipments API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Cargoson is a multi-carrier transport management (TMS) REST API. It exposes a single, unified interface for requesting freight rates, creating shipment queries and direct bookings, retrieving labels and tracking details, and listing carrier services across 2,000+ carriers. Authentication uses an API key as a Bearer token. Requests must send an Accept header of `application/vnd.api.v1`. Endpoints and field names below reflect Cargoson's public integration documentation; request/response schemas not published by Cargoson are intentionally left open (additionalProperties true) rather than fabricated.\n\nContact Support:\n Name: Cargoson Support",
+      "type": "text/plain"
+    }
+  }
+}

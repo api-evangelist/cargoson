@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cargoson Carriers Transports & Tracking API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Transports & Tracking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve booking and tracking details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.cargoson.com/api/v1/bookings/:reference",
+            "params": [
+              {
+                "name": "reference",
+                "value": "",
+                "type": "path",
+                "description": "Cargoson booking reference."
+              }
+            ]
+          },
+          "docs": "Retrieves transport and tracking details for an existing shipment using the Cargoson booking reference."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

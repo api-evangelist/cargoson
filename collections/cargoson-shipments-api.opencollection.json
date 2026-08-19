@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Cargoson Carriers Shipments API",
+    "version": "1"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Shipments",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a shipment query or direct booking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.cargoson.com/api/v1/queries",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a transport request. In query mode the request is created without selecting a carrier so prices and delivery times can be compared later. Supplying options[direct_booking_service_id] books directly with the chosen carrier service."
+        },
+        {
+          "info": {
+            "name": "Create a return label for an existing shipment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.cargoson.com/api/v1/bookings/:reference/return_labels",
+            "params": [
+              {
+                "name": "reference",
+                "value": "",
+                "type": "path",
+                "description": "Cargoson booking reference."
+              }
+            ]
+          },
+          "docs": "Generates a return shipping label for an existing booking identified by its Cargoson booking reference."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
