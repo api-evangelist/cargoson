@@ -36,6 +36,10 @@ apis:
 - aid: cargoson:webhooks
   name: Cargoson Webhooks
   tags:
+  - Webhook
+  - Event
+  - Notification
+  tags_raw:
   - Webhooks
   - Events
   - Notifications
