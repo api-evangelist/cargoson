@@ -8,6 +8,18 @@ description: Cargoson is an Estonian B2B cloud transport management software (TM
   across 2,000+ carriers using one set of endpoints, authentication, and data
   formats. Cargoson is carrier-neutral; customers contract directly with their own
   carriers and upload their own freight rates.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
