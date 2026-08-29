@@ -130,6 +130,9 @@ apis:
   - type: OpenCollection
     url: collections/cargoson.opencollection.json
 common:
+- type: CapabilityMap
+  url: capabilities/cargoson-capability-edges.yml
+  name: Cargoson Business Capability Map
 - type: AgenticAccess
   url: agentic-access/cargoson-agentic-access.yml
 - type: VulnerabilityDisclosure
