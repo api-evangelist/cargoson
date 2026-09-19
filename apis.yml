@@ -41,6 +41,13 @@ tags:
 - Freight
 - Shipping
 - Logistics
+- Carrier
+tags_raw:
+- Transport Management
+- TMS
+- Freight
+- Shipping
+- Logistics
 - Carriers
 created: '2026-06-21'
 modified: '2026-06-21'
@@ -72,6 +79,8 @@ apis:
   humanURL: https://www.cargoson.com/en/integrations
   baseURL: https://www.cargoson.com/api/v1
   tags:
+  - Carrier
+  tags_raw:
   - Carriers
   properties:
   - type: OpenAPI
