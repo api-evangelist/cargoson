@@ -1,10 +1,7 @@
 {
   "provider": "cargoson",
   "sources": [
-    "cargoson-carriers-api-openapi.yml",
-    "cargoson-price-requests-api-openapi.yml",
-    "cargoson-shipments-api-openapi.yml",
-    "cargoson-transports-tracking-api-openapi.yml"
+    "_original/cargoson-openapi.yml"
   ],
   "outputs": [
     "cargoson-carriers-api-openapi.yml",
@@ -15,6 +12,15 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "cargoson-openapi.yml: upgraded openapi 3.0.1 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "cargoson-carriers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cargoson-price-requests-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cargoson-shipments-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "cargoson-transports-tracking-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

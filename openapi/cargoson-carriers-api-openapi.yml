@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
   title: Cargoson Carriers API
-  description: Cargoson is a multi-carrier transport management (TMS) REST API. It exposes a single, unified interface for requesting freight rates, creating shipment queries and direct bookings, retrieving labels and tracking details, and listing carrier services across 2,000+ carriers. Authentication uses an API key as a Bearer token. Requests must send an Accept header of `application/vnd.api.v1`. Endpoints and field names below reflect Cargoson's public integration documentation; request/response schemas not published by Cargoson are intentionally left open (additionalProperties true) rather than fabricated.
+  description: Cargoson is a multi-carrier transport management (TMS) REST API.
   termsOfService: https://www.cargoson.com/en/terms
   contact:
     name: Cargoson Support
@@ -34,15 +34,6 @@ paths:
           description: Missing or invalid API key.
 components:
   schemas:
-    ServiceListResponse:
-      type: object
-      description: List of carrier services.
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Service'
-      additionalProperties: true
     Service:
       type: object
       description: A carrier service available on the account.
@@ -53,6 +44,15 @@ components:
         name:
           type: string
           description: Service name.
+      additionalProperties: true
+    ServiceListResponse:
+      type: object
+      description: List of carrier services.
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
       additionalProperties: true
   securitySchemes:
     bearerAuth:

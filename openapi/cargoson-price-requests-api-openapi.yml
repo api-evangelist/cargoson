@@ -1,7 +1,7 @@
-openapi: 3.0.1
+openapi: 3.2.0
 info:
-  title: Cargoson Carriers Price Requests API
-  description: Cargoson is a multi-carrier transport management (TMS) REST API. It exposes a single, unified interface for requesting freight rates, creating shipment queries and direct bookings, retrieving labels and tracking details, and listing carrier services across 2,000+ carriers. Authentication uses an API key as a Bearer token. Requests must send an Accept header of `application/vnd.api.v1`. Endpoints and field names below reflect Cargoson's public integration documentation; request/response schemas not published by Cargoson are intentionally left open (additionalProperties true) rather than fabricated.
+  title: Cargoson Price Requests API
+  description: Cargoson is a multi-carrier transport management (TMS) REST API.
   termsOfService: https://www.cargoson.com/en/terms
   contact:
     name: Cargoson Support
@@ -42,10 +42,6 @@ paths:
           description: Validation error in the request body.
 components:
   schemas:
-    FreightPrice:
-      type: object
-      description: A single carrier rate quote. Exact fields vary by carrier.
-      additionalProperties: true
     ShipmentRow:
       type: object
       description: A single line/row in a shipment.
@@ -71,6 +67,10 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FreightPrice'
+      additionalProperties: true
+    FreightPrice:
+      type: object
+      description: A single carrier rate quote. Exact fields vary by carrier.
       additionalProperties: true
     FreightPriceListRequest:
       type: object
