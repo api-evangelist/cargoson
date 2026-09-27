@@ -42,6 +42,10 @@ paths:
           description: Validation error in the request body.
 components:
   schemas:
+    FreightPrice:
+      type: object
+      description: A single carrier rate quote. Exact fields vary by carrier.
+      additionalProperties: true
     ShipmentRow:
       type: object
       description: A single line/row in a shipment.
@@ -67,10 +71,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FreightPrice'
-      additionalProperties: true
-    FreightPrice:
-      type: object
-      description: A single carrier rate quote. Exact fields vary by carrier.
       additionalProperties: true
     FreightPriceListRequest:
       type: object

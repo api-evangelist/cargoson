@@ -67,6 +67,10 @@ paths:
           description: Booking reference not found.
 components:
   schemas:
+    ReturnLabelResponse:
+      type: object
+      description: Return label result. Exact fields are not published by Cargoson.
+      additionalProperties: true
     ShipmentRow:
       type: object
       description: A single line/row in a shipment.
@@ -83,18 +87,6 @@ components:
         description:
           type: string
           description: Goods description.
-      additionalProperties: true
-    ReturnLabelResponse:
-      type: object
-      description: Return label result. Exact fields are not published by Cargoson.
-      additionalProperties: true
-    BookingResponse:
-      type: object
-      description: Booking, transport, and tracking details. Exact response fields are not published by Cargoson; left open rather than fabricated.
-      properties:
-        reference:
-          type: string
-          description: Cargoson booking reference.
       additionalProperties: true
     QueryRequest:
       type: object
@@ -146,6 +138,14 @@ components:
               type: integer
               description: Carrier service ID (from the services or freight price list) to book directly with the chosen carrier.
           additionalProperties: true
+      additionalProperties: true
+    BookingResponse:
+      type: object
+      description: Booking, transport, and tracking details. Exact response fields are not published by Cargoson; left open rather than fabricated.
+      properties:
+        reference:
+          type: string
+          description: Cargoson booking reference.
       additionalProperties: true
   securitySchemes:
     bearerAuth:

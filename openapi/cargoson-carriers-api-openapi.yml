@@ -34,6 +34,15 @@ paths:
           description: Missing or invalid API key.
 components:
   schemas:
+    ServiceListResponse:
+      type: object
+      description: List of carrier services.
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
+      additionalProperties: true
     Service:
       type: object
       description: A carrier service available on the account.
@@ -44,15 +53,6 @@ components:
         name:
           type: string
           description: Service name.
-      additionalProperties: true
-    ServiceListResponse:
-      type: object
-      description: List of carrier services.
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Service'
       additionalProperties: true
   securitySchemes:
     bearerAuth:
