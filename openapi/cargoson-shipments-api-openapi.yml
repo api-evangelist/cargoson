@@ -67,26 +67,13 @@ paths:
           description: Booking reference not found.
 components:
   schemas:
-    ReturnLabelResponse:
+    BookingResponse:
       type: object
-      description: Return label result. Exact fields are not published by Cargoson.
-      additionalProperties: true
-    ShipmentRow:
-      type: object
-      description: A single line/row in a shipment.
+      description: Booking, transport, and tracking details. Exact response fields are not published by Cargoson; left open rather than fabricated.
       properties:
-        quantity:
-          type: integer
-          description: Number of packages.
-        package_type:
+        reference:
           type: string
-          description: Package type code (e.g. pallet, parcel, box).
-        weight:
-          type: number
-          description: Weight of the row.
-        description:
-          type: string
-          description: Goods description.
+          description: Cargoson booking reference.
       additionalProperties: true
     QueryRequest:
       type: object
@@ -139,13 +126,26 @@ components:
               description: Carrier service ID (from the services or freight price list) to book directly with the chosen carrier.
           additionalProperties: true
       additionalProperties: true
-    BookingResponse:
+    ReturnLabelResponse:
       type: object
-      description: Booking, transport, and tracking details. Exact response fields are not published by Cargoson; left open rather than fabricated.
+      description: Return label result. Exact fields are not published by Cargoson.
+      additionalProperties: true
+    ShipmentRow:
+      type: object
+      description: A single line/row in a shipment.
       properties:
-        reference:
+        quantity:
+          type: integer
+          description: Number of packages.
+        package_type:
           type: string
-          description: Cargoson booking reference.
+          description: Package type code (e.g. pallet, parcel, box).
+        weight:
+          type: number
+          description: Weight of the row.
+        description:
+          type: string
+          description: Goods description.
       additionalProperties: true
   securitySchemes:
     bearerAuth:

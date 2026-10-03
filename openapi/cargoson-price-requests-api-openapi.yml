@@ -42,36 +42,6 @@ paths:
           description: Validation error in the request body.
 components:
   schemas:
-    FreightPrice:
-      type: object
-      description: A single carrier rate quote. Exact fields vary by carrier.
-      additionalProperties: true
-    ShipmentRow:
-      type: object
-      description: A single line/row in a shipment.
-      properties:
-        quantity:
-          type: integer
-          description: Number of packages.
-        package_type:
-          type: string
-          description: Package type code (e.g. pallet, parcel, box).
-        weight:
-          type: number
-          description: Weight of the row.
-        description:
-          type: string
-          description: Goods description.
-      additionalProperties: true
-    FreightPriceListResponse:
-      type: object
-      description: Collection of freight price quotes.
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/FreightPrice'
-      additionalProperties: true
     FreightPriceListRequest:
       type: object
       description: Request for freight rate quotes. Uses the same collection, delivery, and rows_attributes structure as a query.
@@ -92,6 +62,36 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/ShipmentRow'
+      additionalProperties: true
+    FreightPriceListResponse:
+      type: object
+      description: Collection of freight price quotes.
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/FreightPrice'
+      additionalProperties: true
+    FreightPrice:
+      type: object
+      description: A single carrier rate quote. Exact fields vary by carrier.
+      additionalProperties: true
+    ShipmentRow:
+      type: object
+      description: A single line/row in a shipment.
+      properties:
+        quantity:
+          type: integer
+          description: Number of packages.
+        package_type:
+          type: string
+          description: Package type code (e.g. pallet, parcel, box).
+        weight:
+          type: number
+          description: Weight of the row.
+        description:
+          type: string
+          description: Goods description.
       additionalProperties: true
   securitySchemes:
     bearerAuth:
