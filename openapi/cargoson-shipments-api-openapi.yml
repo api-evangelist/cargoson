@@ -126,10 +126,6 @@ components:
               description: Carrier service ID (from the services or freight price list) to book directly with the chosen carrier.
           additionalProperties: true
       additionalProperties: true
-    ReturnLabelResponse:
-      type: object
-      description: Return label result. Exact fields are not published by Cargoson.
-      additionalProperties: true
     ShipmentRow:
       type: object
       description: A single line/row in a shipment.
@@ -146,6 +142,10 @@ components:
         description:
           type: string
           description: Goods description.
+      additionalProperties: true
+    ReturnLabelResponse:
+      type: object
+      description: Return label result. Exact fields are not published by Cargoson.
       additionalProperties: true
   securitySchemes:
     bearerAuth:
