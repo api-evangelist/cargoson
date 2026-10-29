@@ -1,4 +1,4 @@
-# Cargoson (cargoson)
+# Cargoson
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,151 +66,123 @@
 
 Cargoson is an Estonian B2B cloud transport management software (TMS) platform for manufacturers and wholesalers. Its unified REST API lets shippers request freight rates, book shipments, generate labels, and track deliveries across 2,000+ carriers using one set of endpoints, authentication, and data formats. Cargoson is carrier-neutral; customers contract directly with their own carriers and upload their own freight rates.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/cargoson/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/cargoson/refs/heads/main/apis.yml)
+**Areas:** Transport Management · TMS · Freight · Shipping · Logistics · Carrier
 
-## Tags
+## Cargoson on APIs.io
 
-- Transport Management
-- TMS
-- Freight
-- Shipping
-- Logistics
-- Carriers
+Everything profiled for Cargoson is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/cargoson/](https://apis.io/providers/cargoson/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (5)
 
-- **Created:** 2026-06-21
-- **Modified:** 2026-06-21
+- [Cargoson Webhooks](https://apis.io/apis/cargoson/webhooks/) — Cargoson can deliver real-time event notifications (shipment status updates, booking confirmations, shipment changes) to a customer-configured endpoint URL,…
+- [Cargoson Carriers API](https://apis.io/apis/cargoson/cargoson-carriers-api/) — List carrier services available on the account.
+- [Cargoson Price Requests API](https://apis.io/apis/cargoson/cargoson-price-requests-api/) — Retrieve live freight rate quotes across activated carriers.
+- [Cargoson Shipments API](https://apis.io/apis/cargoson/cargoson-shipments-api/) — Create shipment queries and direct bookings, retrieve labels.
+- [Cargoson Transports & Tracking API](https://apis.io/apis/cargoson/cargoson-transports-tracking-api/) — Retrieve booking, transport, and tracking details.
 
-## APIs
+### Published properties
 
-### Cargoson Shipments API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Create shipment queries or direct bookings via POST /queries, then retrieve labels and generate return labels for existing bookings. A query can be created without a carrier (for later comparison) or booked directly by supplying a direct_booking_service_id.
+#### Agentic access (1)
 
-- **Human URL:** [https://www.cargoson.com/en/integrations](https://www.cargoson.com/en/integrations)
-- **Base URL:** `https://www.cargoson.com/api/v1`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Cargoson Agentic Access](https://apis.io/agentic-access/cargoson/cargoson-agentic-access/)
 
-- Shipments
-- Bookings
-- Labels
+#### Collections (5)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://www.cargoson.com/en/integrations)
-- [OpenAPI](openapi/cargoson-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cargoson.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cargoson.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Cargoson API](https://apis.io/collections/cargoson/open-cargoson/)
+- [Cargoson Carriers API](https://apis.io/collections/cargoson/open-cargoson-carriers-api/)
+- [Cargoson Carriers Price Requests API](https://apis.io/collections/cargoson/open-cargoson-price-requests-api/)
+- [Cargoson Carriers Shipments API](https://apis.io/collections/cargoson/open-cargoson-shipments-api/)
+- [Cargoson Carriers Transports & Tracking API](https://apis.io/collections/cargoson/open-cargoson-transports-tracking-api/)
 
-### Cargoson Price Requests & Quotes API
+#### Security (3)
 
-Retrieve live freight rate quotes across activated carriers via POST /freightPrices/list, comparing cost, speed, and service level before selecting a carrier. Prices are pulled directly from each carrier's system.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://www.cargoson.com/en/integrations](https://www.cargoson.com/en/integrations)
-- **Base URL:** `https://www.cargoson.com/api/v1`
+- [Cargoson Authentication](https://apis.io/security/cargoson/cargoson-authentication/)
+- [Cargoson Domain Security](https://apis.io/security/cargoson/cargoson-domain-security/)
+- [Cargoson Vulnerability Disclosure](https://apis.io/security/cargoson/cargoson-vulnerability-disclosure/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Price Requests
-- Quotes
-- Freight Rates
+Published plans, tiers and prices.
 
-#### Properties
+- [Cargoson Plans Pricing](https://apis.io/plans/cargoson/cargoson-plans-pricing/)
 
-- [Documentation](https://www.cargoson.com/en/integrations)
-- [OpenAPI](openapi/cargoson-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cargoson.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cargoson.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Cargoson Transports & Tracking API
+Published request limits.
 
-Retrieve transport and tracking details for an existing shipment via GET /bookings/{reference} using the Cargoson booking reference.
+- [Cargoson Rate Limits](https://apis.io/rate-limits/cargoson/cargoson-rate-limits/)
 
-- **Human URL:** [https://www.cargoson.com/en/integrations](https://www.cargoson.com/en/integrations)
-- **Base URL:** `https://www.cargoson.com/api/v1`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Transports
-- Tracking
-- Status
+- [Cargoson Finops](https://apis.io/finops/cargoson/cargoson-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://www.cargoson.com/en/integrations)
-- [OpenAPI](openapi/cargoson-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cargoson.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cargoson.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Cargoson Carriers & Services API
-
-List the carrier services available on your company account via GET /services/list. Returned service IDs can be used for direct booking through the Shipments API.
-
-- **Human URL:** [https://www.cargoson.com/en/integrations](https://www.cargoson.com/en/integrations)
-- **Base URL:** `https://www.cargoson.com/api/v1`
-
-#### Tags
-
-- Carriers
-- Services
-
-#### Properties
-
-- [Documentation](https://www.cargoson.com/en/integrations)
-- [OpenAPI](openapi/cargoson-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cargoson.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cargoson.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Cargoson Addresses API
-
-Collection and delivery address details (country, postcode, address rows, city, company, contact name and phone) are supplied inline on query and pricing requests. A standalone documented address-book endpoint was not confirmed in public documentation.
-
-- **Human URL:** [https://www.cargoson.com/en/integrations](https://www.cargoson.com/en/integrations)
-- **Base URL:** `https://www.cargoson.com/api/v1`
-
-#### Tags
-
-- Addresses
-- Collection
-- Delivery
-
-#### Properties
-
-- [Documentation](https://www.cargoson.com/en/integrations)
-- [OpenAPI](openapi/cargoson-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/cargoson.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/cargoson.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Cargoson Webhooks
-
-Cargoson can deliver real-time event notifications (shipment status updates, booking confirmations, shipment changes) to a customer-configured endpoint URL, set up under Settings > Integrations > Webhooks. Public payload schemas are not documented; setup is arranged with Cargoson support.
-
-- **Human URL:** [https://www.cargoson.com/en/blog/what-are-webhooks-and-how-do-they-work](https://www.cargoson.com/en/blog/what-are-webhooks-and-how-do-they-work)
-- **Base URL:** `https://www.cargoson.com/api/v1`
-
-#### Tags
-
-- Webhooks
-- Events
-- Notifications
-
-#### Properties
-
-- [Documentation](https://www.cargoson.com/en/blog/what-are-webhooks-and-how-do-they-work)
-
-## Common Properties
-
-- [GitHub Organization](https://github.com/cargoson)
-- [LinkedIn](https://www.linkedin.com/company/cargoson)
 - [Website](https://www.cargoson.com/)
 - [Documentation](https://www.cargoson.com/en/integrations)
-- [Plans](plans/cargoson-plans-pricing.yml)
-- [Rate Limits](rate-limits/cargoson-rate-limits.yml)
-- [Fin Ops](finops/cargoson-finops.yml)
+- [GitHub](https://github.com/cargoson)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 24.8** — emerging · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 50.2 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 22.6 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 15.0** — Telecommunications
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/cargoson/](https://apis.io/providers/cargoson/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Cargoson: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/cargoson/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
